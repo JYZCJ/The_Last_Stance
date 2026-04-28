@@ -1,0 +1,280 @@
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>The Last Stance</title>
+        <link rel="icon" href="assets/Logo_The_Last_Stance.png" type="image/png">
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Gelasio:wght@400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.body.classList.add("fade-in");
+
+            const links = document.querySelectorAll('a[href$=".html"], a[href*=".html#"]');
+
+            links.forEach(link => {
+                link.addEventListener("click", function (e) {
+                    const href = this.getAttribute("href");
+
+                    if (!href || href.startsWith("#")) return;
+
+                    e.preventDefault();
+                    document.body.classList.remove("fade-in");
+                    document.body.classList.add("fade-out");
+
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 150);
+                });
+            });
+        });
+    </script>
+
+    
+    <body>
+        <audio id="bg-music" controls preload="auto">
+            <source src="assets/music/Struggler.mp3" type="audio/mpeg">
+        </audio>
+
+        <button id="music-toggle" class="music-button" type="button">SOUND ON</button>
+
+        
+        <header class="navbar">
+            <div class="logo-box">
+                <a href="index.html" class="logo-link">
+                    <img src="assets/paper.png" alt="MI103 Project Logo" class="logo-image">
+                </a>
+            </div>
+
+            <nav class="nav-links">
+                <a href="index.html">THE LAST STANCE</a>
+                <a href="#game-info">GAME INFO</a>
+                <a href="#rules">RULES</a>
+                <a href="reference.html">REFERENCES</a>
+                <a href="about.html">ABOUT</a>
+                <a href="#contact">CONTACT</a>
+            </nav>
+
+            <div class="social-links">
+                <a href="#" aria-label="YouTube">
+                    <img src="assets/Youtube_logo.png" alt="YouTube" class="youtube-icon">
+                </a>
+                <a href="https://discord.gg/TYEYENsBg" aria-label="Discord">
+                    <img src="assets/Discord-Logo.png" alt="Discord">
+                </a>
+            </div>
+        </header>
+
+
+        <section class="hero-section">
+            <img src="assets/background_with_title.png" alt="The Last Stance Hero Image" class="hero-image">
+        </section>
+
+
+        <section class="intro-section" id="game-info">
+            <div class="intro-heading">
+                <p class="intro-label">NO MERCY</p>
+                <h2 class="intro-title">ONLY ONE STRAGGLER REMAINS</h2>
+            </div>
+
+            <div class="intro-summary">
+                <p>
+                    The Last Stance is a brutal 1v1 tactical duel set in a collapsing arena.
+                    Choose your actions, predict your opponent, and survive long enough to become the last one standing.
+                </p>
+            </div>
+
+            <div class="feature-row">
+                <div class="feature-image-box">
+                    <img src="assets/feature-1.png" alt="Feature image 1" class="feature-image">
+                </div>
+                <div class="feature-text-box">
+                    <h3>THREE CHOSEN ACTIONS</h3>
+                    <p>Each round, both fighters secretly choose three actions before the reveal.</p>
+                </div>
+            </div>
+
+            <div class="feature-row reverse">
+                <div class="feature-image-box">
+                    <img src="assets/feature-2.png" alt="Feature image 2" class="feature-image">
+                </div>
+                <div class="feature-text-box">
+                    <h3>TACTICAL 1V1 COMBAT</h3>
+                    <p>Outthink your opponent in a duel built on pressure and timing.</p>
+                </div>
+            </div>
+
+            <div class="feature-row">
+                <div class="feature-image-box">
+                    <img src="assets/feature-3.png" alt="Feature image 3" class="feature-image">
+                </div>
+                <div class="feature-text-box">
+                    <h3>COLLAPSING ARENA</h3>
+                    <p>As the arena falls apart, positioning becomes just as deadly as combat.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="double-divider"></div>
+
+        <section class="rules-section" id="rules">
+            <div class="rules-heading">
+                <p class="rules-label">RULES</p>
+                <h2 class="rules-title">HOW THE DUEL WORKS</h2>
+            </div>
+
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <h3><span>01</span> ESSENTIALS</h3>
+                    <ul class="rule-list">
+                        <li>2 players enter the duel.</li>
+                        <li>The battle takes place on a 5x5 board.</li>
+                        <li>Each player starts with 8 HP.</li>
+                        <li>If both fighters reach 0 HP at the same time, the match ends in a draw.</li>
+                    </ul>
+                </div>
+
+                <div class="rule-card">
+                    <h3><span>05</span> THE POISON ZONE</h3>
+                    <ul class="rule-list">
+                        <li>Starting in Round 3, the outer ring becomes poisonous.</li>
+                        <li>Only the inner 3x3 area remains safe.</li>
+                        <li>Poison is checked at the end of each round.</li>
+                        <li>Rounds 3–4 deal 1 poison damage.</li>
+                        <li>Rounds 5–6 deal 2 poison damage.</li>
+                        <li>Round 7 onward deals 3 poison damage.</li>
+                    </ul>
+                </div>
+
+                <div class="rule-card">
+                    <h3><span>02</span> ROUND STRUCTURE</h3>
+                    <ul class="rule-list">
+                        <li>Draw 3 attack cards.</li>
+                        <li>Openly take movement cards for the round.</li>
+                        <li>Secretly choose 3 actions.</li>
+                        <li>Place all 3 actions face down.</li>
+                        <li>Reveal both turns at the same time.</li>
+                        <li>Resolve Action 1, then Action 2, then Action 3.</li>
+                    </ul>
+                </div>
+
+                <div class="rule-card">
+                    <h3><span>06</span> CARDS AND ACTIONS</h3>
+                    <ul class="rule-list">
+                        <li>Each player uses a 14-card attack deck.</li>
+                        <li>The deck contains Slash, Heavy Strike, Lunge, Sweep, Riposte, Push, and Block.</li>
+                        <li>At the end of the round, you may keep 1 unused attack card for the next round.</li>
+                        <li>Each fighter also keeps 3 permanent Stay cards that are never discarded.</li>
+                    </ul>
+                </div>
+
+                <div class="rule-card">
+                    <h3><span>03</span> COMMITMENT AND REVEAL</h3>
+                    <ul class="rule-list">
+                        <li>Both players lock in three actions before the round begins.</li>
+                        <li>Actions are revealed simultaneously.</li>
+                        <li>Every exchange is resolved at the same time.</li>
+                        <li>Both players can strike, miss, or suffer damage in the same moment.</li>
+                    </ul>
+                </div>
+
+                <div class="rule-card">
+                    <h3><span>07</span> CORE PRINCIPLES</h3>
+                    <ul class="rule-list">
+                        <li>If both attacks are valid in the same action, both players take damage.</li>
+                        <li>A fighter may move into an attack path and still be hit during that same action.</li>
+                        <li>Positioning, timing, and commitment matter just as much as raw damage.</li>
+                    </ul>
+                </div>
+
+                <div class="rule-card">
+                    <h3><span>04</span> MOVEMENT AND CONFLICT</h3>
+                    <ul class="rule-list">
+                        <li>Each player has a public pool of 5 movement cards.</li>
+                        <li>Your opponent knows how many movement cards you took, but not when you will use them.</li>
+                        <li>If both fighters try to enter the same space, both remain where they are.</li>
+                        <li>If both fighters try to swap spaces, both also stay in place.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="update-section" id="contact">
+            <div class="update-icons">
+                <a href="#" aria-label="YouTube">
+                    <img src="assets/Youtube_logo.png" alt="YouTube" class="footer-youtube-icon" class="sec_youtube_icon">
+                </a>
+                <a href="https://discord.gg/TYEYENsBg" aria-label="Discord">
+                    <img src="assets/Discord-Logo.png" alt="Discord" class="footer-discord-icon">
+                </a>
+            </div>
+
+            <h2 class="update-title">
+                GET UPDATES ON DEVELOPMENT, PLAYTESTING,<br>
+                AND FUTURE BUILDS OF <span>THE LAST STANCE</span>
+            </h2>
+
+            <form class="update-form">
+                <input type="email" class="update-input" placeholder="*Email">
+                <button type="submit" class="submit-button">Submit</button>
+            </form>
+        </section>
+
+
+
+        <script>
+            const music = document.getElementById("bg-music");
+            const musicToggle = document.getElementById("music-toggle");
+
+            window.addEventListener("load", async () => {
+                const savedTime = localStorage.getItem("musicTime");
+                const shouldPlay = localStorage.getItem("musicPlaying");
+
+                if (savedTime) {
+                    music.currentTime = parseFloat(savedTime);
+                }
+
+                if (shouldPlay === "true") {
+                    try {
+                        await music.play();
+                        musicToggle.textContent = "SOUND OFF";
+                    } catch (error) {
+                        console.log("Autoplay was blocked:", error);
+                        musicToggle.textContent = "SOUND ON";
+                    }
+                }
+            });
+
+            music.addEventListener("timeupdate", () => {
+                localStorage.setItem("musicTime", music.currentTime);
+            });
+
+            musicToggle.addEventListener("click", async () => {
+                try {
+                    if (music.paused) {
+                        await music.play();
+                        localStorage.setItem("musicPlaying", "true");
+                        musicToggle.textContent = "SOUND OFF";
+                    } else {
+                        music.pause();
+                        localStorage.setItem("musicPlaying", "false");
+                        musicToggle.textContent = "SOUND ON";
+                    }
+                } catch (error) {
+                    console.error("music failed:", error);
+                }
+            });
+
+            window.addEventListener("beforeunload", () => {
+                localStorage.setItem("musicTime", music.currentTime);
+            });
+        </script>
+
+    </body>
+
+</html>

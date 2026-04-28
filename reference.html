@@ -1,0 +1,173 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>The Last Stance</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="assets/Logo_The_Last_Stance.png" type="image/png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Gelasio:wght@400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.body.classList.add("fade-in");
+
+            const links = document.querySelectorAll('a[href$=".html"], a[href*=".html#"]');
+
+            links.forEach(link => {
+                link.addEventListener("click", function (e) {
+                    const href = this.getAttribute("href");
+
+                    if (!href || href.startsWith("#")) return;
+
+                    e.preventDefault();
+                    document.body.classList.remove("fade-in");
+                    document.body.classList.add("fade-out");
+
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 150);
+                });
+            });
+        });
+    </script>
+
+    <body>
+
+        <audio id="bg-music" controls preload="auto">
+            <source src="assets/music/Struggler.mp3" type="audio/mpeg">
+        </audio>
+
+        <button id="music-toggle" class="music-button" type="button">SOUND ON</button>
+
+
+        <header class="navbar">
+            <div class="logo-box">
+                <a href="index.html" class="logo-link">
+                    <img src="assets/paper.png" alt="MI103 Project Logo" class="logo-image">
+                </a>
+            </div>
+
+            <nav class="nav-links">
+                <a href="index.html">THE LAST STANCE</a>
+                <a href="index.html#game-info">GAME INFO</a>
+                <a href="index.html#rules">RULES</a>
+                <a href="reference.html">REFERENCES</a>
+                <a href="about.html">ABOUT</a>
+                <a href="#contact">CONTACT</a>
+            </nav>
+
+            <div class="social-links">
+                <a href="#" aria-label="YouTube">
+                    <img src="assets/Youtube_logo.png" alt="YouTube" class="youtube-icon">
+                </a>
+                <a href="https://discord.gg/TYEYENsBg" aria-label="Discord">
+                    <img src="assets/Discord-Logo.png" alt="Discord">
+                </a>
+            </div>
+        </header>
+
+        <main class="reference-page">
+            <div class="rules-heading">
+                <p class="rules-label">REFERENCE</p>
+                <h2 class="rules-title">WHAT SHAPED THE LAST STANCE</h2>
+            </div>
+
+            <div class="reference-text">
+                <p class="reference-intro">
+                    As we said we want a gritty action animated black and white style.
+                    References for styles include
+                </p>
+
+                <ul class="rule-list">
+                    <li>Berserk</li>
+                    <li>Slay The Princess</li>
+                    <li>Slay The Spire (especially for card format)</li>
+                    <li>Hades (only for shape form and linework, not its color palettes)</li>
+                    <li>Chess (the gameboard is similar)</li>
+                </ul>
+            </div>
+
+            <div class="reference-image-row">
+                <img src="assets/slay_the_princess.png" alt="Slay the Princess reference" class="reference-image">
+                <img src="assets/berserk.png" alt="Berserk reference" class="reference-image">
+                <img src="assets/hades.png" alt="Hades reference" class="reference-image">
+                <img src="assets/slay_the_spire.png" alt="Slay the Spire reference" class="reference-image">
+            </div>
+        </main>
+
+
+        <section class="update-section" id="contact">
+            <div class="update-icons">
+                <a href="#" aria-label="YouTube">
+                    <img src="assets/Youtube_logo.png" alt="YouTube" class="footer-youtube-icon" class="sec_youtube_icon">
+                </a>
+                <a href="https://discord.gg/TYEYENsBg" aria-label="Discord">
+                    <img src="assets/Discord-Logo.png" alt="Discord" class="footer-discord-icon">
+                </a>
+            </div>
+
+            <h2 class="update-title">
+                GET UPDATES ON DEVELOPMENT, PLAYTESTING,<br>
+                AND FUTURE BUILDS OF <span>THE LAST STANCE</span>
+            </h2>
+
+            <form class="update-form">
+                <input type="email" class="update-input" placeholder="*Email">
+                <button type="submit" class="submit-button">Submit</button>
+            </form>
+        </section>   
+        
+        
+<script>
+            const music = document.getElementById("bg-music");
+            const musicToggle = document.getElementById("music-toggle");
+
+            window.addEventListener("load", async () => {
+                const savedTime = localStorage.getItem("musicTime");
+                const shouldPlay = localStorage.getItem("musicPlaying");
+
+                if (savedTime) {
+                    music.currentTime = parseFloat(savedTime);
+                }
+
+                if (shouldPlay === "true") {
+                    try {
+                        await music.play();
+                        musicToggle.textContent = "SOUND OFF";
+                    } catch (error) {
+                        console.log("Autoplay was blocked:", error);
+                        musicToggle.textContent = "SOUND ON";
+                    }
+                }
+            });
+
+            music.addEventListener("timeupdate", () => {
+                localStorage.setItem("musicTime", music.currentTime);
+            });
+
+            musicToggle.addEventListener("click", async () => {
+                try {
+                    if (music.paused) {
+                        await music.play();
+                        localStorage.setItem("musicPlaying", "true");
+                        musicToggle.textContent = "SOUND OFF";
+                    } else {
+                        music.pause();
+                        localStorage.setItem("musicPlaying", "false");
+                        musicToggle.textContent = "SOUND ON";
+                    }
+                } catch (error) {
+                    console.error("music failed:", error);
+                }
+            });
+
+            window.addEventListener("beforeunload", () => {
+                localStorage.setItem("musicTime", music.currentTime);
+            });
+        </script>
+
+    </body>
+
+</html>
