@@ -278,6 +278,12 @@ body {
     margin: 0;
 }
 
+.box-update {
+    max-width: 720px;
+    height: 400px;
+    object-fit: contain;
+}
+
 .double-divider {
     width: 72%;
     height: 6px;
